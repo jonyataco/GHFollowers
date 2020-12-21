@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		AB22D6AA25902533007DA076 /* NetworkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB22D6A925902533007DA076 /* NetworkManager.swift */; };
+		AB22D6AF259025D2007DA076 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB22D6AE259025D2007DA076 /* User.swift */; };
+		AB22D6B2259025DD007DA076 /* Follower.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB22D6B1259025DD007DA076 /* Follower.swift */; };
 		AB2FF5AA2579F78C0090C64E /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2FF5A92579F78C0090C64E /* SearchVC.swift */; };
 		AB2FF5AD2579F84E0090C64E /* FavoritesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2FF5AC2579F84E0090C64E /* FavoritesListVC.swift */; };
 		AB2FF5B0257B36CA0090C64E /* GFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2FF5AF257B36CA0090C64E /* GFButton.swift */; };
@@ -23,6 +26,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		AB22D6A925902533007DA076 /* NetworkManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkManager.swift; sourceTree = "<group>"; };
+		AB22D6AE259025D2007DA076 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		AB22D6B1259025DD007DA076 /* Follower.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Follower.swift; sourceTree = "<group>"; };
 		AB2FF5A92579F78C0090C64E /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		AB2FF5AC2579F84E0090C64E /* FavoritesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListVC.swift; sourceTree = "<group>"; };
 		AB2FF5AF257B36CA0090C64E /* GFButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFButton.swift; sourceTree = "<group>"; };
@@ -51,6 +57,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		AB22D6A825902522007DA076 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				AB22D6A925902533007DA076 /* NetworkManager.swift */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+		AB22D6AD259025C4007DA076 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				AB22D6AE259025D2007DA076 /* User.swift */,
+				AB22D6B1259025DD007DA076 /* Follower.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		AB9916BC258F97C1002DE16E /* Screens */ = {
 			isa = PBXGroup;
 			children = (
@@ -111,6 +134,8 @@
 		ABD02BEC2579861500BBBF83 /* GHFollowers */ = {
 			isa = PBXGroup;
 			children = (
+				AB22D6AD259025C4007DA076 /* Model */,
+				AB22D6A825902522007DA076 /* Managers */,
 				AB9916BF258F9887002DE16E /* Support */,
 				AB9916BE258F983A002DE16E /* Extensions */,
 				AB9916BD258F97F8002DE16E /* Custom Views */,
@@ -189,6 +214,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AB22D6AF259025D2007DA076 /* User.swift in Sources */,
+				AB22D6B2259025DD007DA076 /* Follower.swift in Sources */,
+				AB22D6AA25902533007DA076 /* NetworkManager.swift in Sources */,
 				AB2FF5AA2579F78C0090C64E /* SearchVC.swift in Sources */,
 				AB44F758258096310071E1BB /* UIViewController+Ext.swift in Sources */,
 				AB2FF5B0257B36CA0090C64E /* GFButton.swift in Sources */,
