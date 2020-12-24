@@ -13,6 +13,7 @@
 		AB22D6B625902DB1007DA076 /* ErrorMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB22D6B525902DB1007DA076 /* ErrorMessage.swift */; };
 		AB22D6BA2590519E007DA076 /* FollowerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB22D6B92590519E007DA076 /* FollowerCell.swift */; };
 		AB22D6BD259051CF007DA076 /* GFAvatarImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB22D6BC259051CF007DA076 /* GFAvatarImageView.swift */; };
+		AB22D6C025906302007DA076 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB22D6BF25906302007DA076 /* UIHelper.swift */; };
 		AB2FF5AA2579F78C0090C64E /* SearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2FF5A92579F78C0090C64E /* SearchVC.swift */; };
 		AB2FF5AD2579F84E0090C64E /* FavoritesListVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2FF5AC2579F84E0090C64E /* FavoritesListVC.swift */; };
 		AB2FF5B0257B36CA0090C64E /* GFButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB2FF5AF257B36CA0090C64E /* GFButton.swift */; };
@@ -35,6 +36,7 @@
 		AB22D6B525902DB1007DA076 /* ErrorMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorMessage.swift; sourceTree = "<group>"; };
 		AB22D6B92590519E007DA076 /* FollowerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FollowerCell.swift; sourceTree = "<group>"; };
 		AB22D6BC259051CF007DA076 /* GFAvatarImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFAvatarImageView.swift; sourceTree = "<group>"; };
+		AB22D6BF25906302007DA076 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		AB2FF5A92579F78C0090C64E /* SearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchVC.swift; sourceTree = "<group>"; };
 		AB2FF5AC2579F84E0090C64E /* FavoritesListVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesListVC.swift; sourceTree = "<group>"; };
 		AB2FF5AF257B36CA0090C64E /* GFButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GFButton.swift; sourceTree = "<group>"; };
@@ -84,6 +86,7 @@
 			isa = PBXGroup;
 			children = (
 				AB22D6B525902DB1007DA076 /* ErrorMessage.swift */,
+				AB22D6BF25906302007DA076 /* UIHelper.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -244,6 +247,7 @@
 				AB22D6AA25902533007DA076 /* NetworkManager.swift in Sources */,
 				AB2FF5AA2579F78C0090C64E /* SearchVC.swift in Sources */,
 				AB44F758258096310071E1BB /* UIViewController+Ext.swift in Sources */,
+				AB22D6C025906302007DA076 /* UIHelper.swift in Sources */,
 				AB22D6BD259051CF007DA076 /* GFAvatarImageView.swift in Sources */,
 				AB2FF5B0257B36CA0090C64E /* GFButton.swift in Sources */,
 				AB2FF5AD2579F84E0090C64E /* FavoritesListVC.swift in Sources */,
