@@ -61,6 +61,19 @@ class FollowerListVC: UIViewController {
                 // 100 followers that means that there are no more followers
                 if followers.count < 100 { self.hasMoreFollowers = false }
                 self.followers.append(contentsOf: followers)
+                
+                // Check if the followers is empty only after the making the network call
+                if self.followers.isEmpty {
+                    let message = "This user does not have any followers"
+                    
+                    // Update the network on the main thread
+                    DispatchQueue.main.async {
+                        // 
+                        self.showEmptyStateView(with: message, view: self.view)
+                        return
+                    }
+                }
+                
                 self.updateData()
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Bad Stuff Happened", message: error.rawValue, buttonTitle: "Ok")
