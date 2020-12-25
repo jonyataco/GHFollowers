@@ -18,6 +18,7 @@ class FollowerListVC: UIViewController {
     var filteredFollowers = [Follower]()
     var page = 1
     var hasMoreFollowers = true
+    var isSearching = false
     
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
@@ -55,6 +56,7 @@ class FollowerListVC: UIViewController {
         searchController.searchResultsUpdater = self
         searchController.searchBar.placeholder = "Search for a username"
         searchController.searchBar.delegate = self
+        searchController.obscuresBackgroundDuringPresentation = false
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
     }
@@ -123,21 +125,38 @@ extension FollowerListVC: UICollectionViewDelegate {
             getFollowers(username: username, page: page)
         }
     }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let activeArray = isSearching ? filteredFollowers : followers
+        let follower = activeArray[indexPath.item]
+    
+        // Setting the properties on the VC
+        let destVC = UserInfoVC()
+        destVC.username = follower.login
+        
+        let navController = UINavigationController(rootViewController: destVC)
+        present(navController, animated: true)
+    }
 }
 
 extension FollowerListVC: UISearchResultsUpdating, UISearchBarDelegate {
     func updateSearchResults(for searchController: UISearchController) {
         guard let filterText = searchController.searchBar.text, !filterText.isEmpty else { return }
+        isSearching = true
         filteredFollowers = followers.filter { $0.login.lowercased().contains(filterText.lowercased()) }
         
         updateData(with: filteredFollowers)
     }
     
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        isSearching = false
         updateData(with: followers)
     }
     
+    /*
     func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        isSearching = false
         updateData(with: followers)
     }
+    */
 }
