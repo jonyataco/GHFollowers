@@ -11,7 +11,7 @@ protocol FollowerListVCDelegate: class {
     func didRequestFollowers(for username: String)
 }
 
-class FollowerListVC: UIViewController {
+class FollowerListVC: GFDataLoadingVC {
 
     enum Section {
         case main
@@ -44,7 +44,6 @@ class FollowerListVC: UIViewController {
         configureViewController()
         configureDataSource()
         getFollowers(username: username, page: page)
-        //configureDataSource()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -104,7 +103,7 @@ class FollowerListVC: UIViewController {
                     }
                 }
                 
-                self.updateData(with: followers)
+                self.updateData(with: self.followers)
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Bad Stuff Happened", message: error.rawValue, buttonTitle: "Ok")
             }
@@ -123,7 +122,9 @@ class FollowerListVC: UIViewController {
         var snapshot = NSDiffableDataSourceSnapshot<Section, Follower>()
         snapshot.appendSections([.main])
         snapshot.appendItems(followers)
-        dataSource.apply(snapshot, animatingDifferences: true)
+        DispatchQueue.main.async {
+            self.dataSource.apply(snapshot, animatingDifferences: true)
+        }
     }
     
     @objc func addButtonTapped() {

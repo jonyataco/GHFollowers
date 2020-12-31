@@ -18,12 +18,11 @@ class GFButton: UIButton {
         fatalError("init(coder:) has not been implemented")
     }
     
-    init(backgroundColor: UIColor, title: String) {
+    convenience init(backgroundColor: UIColor, title: String) {
         // Since we are using autolayout, we can set the frame size to 0
-        super.init(frame: .zero)
+        self.init(frame: .zero)
         self.backgroundColor = backgroundColor
         self.setTitle(title, for: .normal)
-        configure()
     }
     
     func set(backgroundColor: UIColor, title: String) {
