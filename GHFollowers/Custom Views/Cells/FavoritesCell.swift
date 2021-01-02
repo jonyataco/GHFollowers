@@ -31,8 +31,7 @@ class FavoritesCell: UITableViewCell {
     }
     
     private func configure() {
-        addSubview(avatarImageView)
-        addSubview(usernameLabel)
+        addSubviews(avatarImageView, usernameLabel)
         
         // Shows the arrow on the right hand side of a cell indicating that it is tapable
         accessoryType = .disclosureIndicator
