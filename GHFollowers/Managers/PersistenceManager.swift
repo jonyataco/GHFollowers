@@ -19,7 +19,6 @@ enum PersistenceManager {
 
     static private let defaults = UserDefaults.standard
     
-    
     static func updateWith(favorite: Follower, actionType: PersistenceActionType, completed: @escaping (GFError?) -> Void) {
         retrieveFavorites { result in
             switch result {
@@ -47,7 +46,6 @@ enum PersistenceManager {
     
     
     static func retrieveFavorites(completed: @escaping (Result<[Follower], GFError>) -> Void) {
-        
         // If the retrieved data is nil, that means that there is no saved data yet. Not necessarily an error
         guard let favoritesData = defaults.object(forKey: Keys.favorites) as? Data else {
             completed(.success([]))

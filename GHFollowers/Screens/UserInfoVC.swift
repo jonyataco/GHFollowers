@@ -21,10 +21,10 @@ class UserInfoVC: UIViewController {
     let itemViewTwo = UIView()
     let dateLabel = GFBodyLabel(textAlignment: .center)
     var itemViews: [UIView] = []
-    
 
     var username: String!
     weak var delegate: UserInfoVCDelegate!
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -114,7 +114,6 @@ class UserInfoVC: UIViewController {
     @objc func dismissVC() {
         dismiss(animated: true)
     }
-
 }
 
 extension UserInfoVC: GFRepoItemVCDelegate {

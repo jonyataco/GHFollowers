@@ -24,6 +24,7 @@ class FollowerListVC: GFDataLoadingVC {
     var collectionView: UICollectionView!
     var dataSource: UICollectionViewDiffableDataSource<Section, Follower>!
     
+    
     init(username: String) {
         super.init(nibName: nil, bundle: nil)
         self.username = username
@@ -83,30 +84,35 @@ class FollowerListVC: GFDataLoadingVC {
         
             switch result {
             case .success(let followers):
-                // Since the network call will always return 100 followers, if it returns less than
-                // 100 followers that means that there are no more followers
-                if followers.count < 100 { self.hasMoreFollowers = false }
-                self.followers.append(contentsOf: followers)
+                self.updateUI(with: followers)
                 
-                // Check if the followers is empty only after the making the network call
-                if self.followers.isEmpty {
-                    let message = "This user does not have any followers"
-                    
-                    // Update the network on the main thread
-                    DispatchQueue.main.async {
-                        // 
-                        self.showEmptyStateView(with: message, view: self.view)
-                        return
-                    }
-                }
-                
-                self.updateData(with: self.followers)
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Bad Stuff Happened", message: error.rawValue, buttonTitle: "Ok")
             }
             
             self.isLoadingMoreFollowers = false
         }
+    }
+    
+    func updateUI(with followers: [Follower]) {
+        // Since the network call will always return 100 followers, if it returns less than
+        // 100 followers that means that there are no more followers
+        if followers.count < 100 { self.hasMoreFollowers = false }
+        self.followers.append(contentsOf: followers)
+        
+        // Check if the followers is empty only after the making the network call
+        if self.followers.isEmpty {
+            let message = "This user does not have any followers"
+            
+            // Update the network on the main thread
+            DispatchQueue.main.async {
+                //
+                self.showEmptyStateView(with: message, view: self.view)
+                return
+            }
+        }
+        
+        self.updateData(with: self.followers)
     }
     
     func configureDataSource() {
@@ -136,24 +142,27 @@ class FollowerListVC: GFDataLoadingVC {
             
             switch result {
             case .success(let user):
-                let favorite = Follower(login: user.login, avatarUrl: user.avatarUrl)
-                
-                PersistenceManager.updateWith(favorite: favorite, actionType: .add) { [weak self] error in
-                    guard let self = self else { return }
-                
-                    // If error is nil, then that means it worked so show a success message
-                    guard let error = error else {
-                        self.presentGFAlertOnMainThread(title: "Success!", message: "You have successfully favorited this user 🎉", buttonTitle: "Horray!")
-                        return
-                    }
-                    
-                    self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
-                }
-                
+                self.addUserToFavorites(user: user)
                 
             case .failure(let error):
                 self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
             }
+        }
+    }
+    
+    func addUserToFavorites(user: User) {
+        let favorite = Follower(login: user.login, avatarUrl: user.avatarUrl)
+        
+        PersistenceManager.updateWith(favorite: favorite, actionType: .add) { [weak self] error in
+            guard let self = self else { return }
+            
+            // If error is nil, then that means it worked so show a success message
+            guard let error = error else {
+                self.presentGFAlertOnMainThread(title: "Success!", message: "You have successfully favorited this user 🎉", buttonTitle: "Horray!")
+                return
+            }
+            
+            self.presentGFAlertOnMainThread(title: "Something went wrong", message: error.rawValue, buttonTitle: "Ok")
         }
     }
     
@@ -210,6 +219,7 @@ extension FollowerListVC: UserInfoVCDelegate {
         self.username = username
         title = username
         page = 1
+        
         followers.removeAll()
         filteredFollowers.removeAll()
         collectionView.scrollToItem(at: IndexPath(item: 0, section: 0), at: .top, animated: true)

@@ -15,7 +15,6 @@ class GFDataLoadingVC: UIViewController {
         super.viewDidLoad()
     }
     
-    
     func showLoadingView() {
         containerView = UIView(frame: view.bounds)
         view.addSubview(containerView)
