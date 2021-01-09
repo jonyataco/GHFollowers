@@ -115,6 +115,7 @@ class NetworkManager {
             }
             
             // Once we have retrieved the image, we add it to the cache
+            // This makes the cache huge without setting limit...
             self.cache.setObject(image, forKey: cacheKey)
             
             // Set the image on the main thread
